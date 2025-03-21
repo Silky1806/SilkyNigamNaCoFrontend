@@ -162,9 +162,5 @@ body {
         flex-direction: column;
         gap: 10px;
     }
-    .row .col-6 {
-        width: 100%;
-        display: block;
-    }
 }
 
