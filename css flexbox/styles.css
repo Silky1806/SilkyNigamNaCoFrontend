@@ -29,12 +29,6 @@ header {
   font-size: 1.2rem;
 }
 
-/* Hide the checkbox */
-.menu-toggle {
-  display: none;
-}
-
-/* Default desktop */
 .nav {
   display: flex;
   gap: 1rem;
@@ -43,12 +37,18 @@ header {
 .nav a {
   text-decoration: none;
   color: #111;
+  transition: opacity 0.3s ease;
 }
 
 .menu-icon {
   display: none;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   cursor: pointer;
+}
+
+/* Hide the checkbox */
+.menu-toggle {
+  display: none;
 }
 
 /* Wrapper */
@@ -94,12 +94,6 @@ header {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-.info-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
 .middle-panel {
   display: flex;
   flex-direction: column;
@@ -133,6 +127,7 @@ header {
   gap: 1rem;
   width: 100%;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
 
 .info-pair .info-group {
@@ -156,10 +151,10 @@ header {
   margin-bottom: 1rem;
 }
 
-/* Bottom Section Boxes */
+/* Bottom Section */
 .bottom-section {
   width: 90%;
-  max-width: 1200px;
+  max-width: 1200px; 
   margin: 2rem auto 0;
   display: flex;
   justify-content: space-between;
@@ -183,26 +178,39 @@ header {
 /* Responsive */
 @media (max-width: 768px) {
   .nav {
-    display: none;
+    max-height: 0;
+    overflow: hidden;
     flex-direction: column;
     background-color: white;
     position: absolute;
     top: 70px;
     left: 1rem;
     right: 1rem;
-    padding: 1rem;
+    padding: 0 1rem;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     z-index: 10;
+    transition: max-height 0.3s ease, padding 0.3s ease;
   }
 
   .menu-icon {
     display: block;
+    font-size: 1.8rem;
+    cursor: pointer;
   }
 
-  /* Show nav when checkbox is checked */
   .menu-toggle:checked + .menu-icon + .nav {
-    display: flex;
+    max-height: 500px;
+    padding: 1rem;
+  }
+
+  .nav a {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .menu-toggle:checked + .menu-icon + .nav a {
+    opacity: 1;
   }
 
   .content-layout,
@@ -220,6 +228,10 @@ header {
     padding: 0.5rem;
     border-radius: 6px;
     cursor: pointer;
+  }
+
+  .content-layout {
+    flex-direction: column;
   }
 
   .left-panel {
@@ -245,3 +257,7 @@ header {
     gap: 1rem;
   }
 }
+
+ 
+
+  
